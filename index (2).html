@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Pedro, Belize – Our Favorite Spots</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ocean: #0077B6;
+            --ocean-deep: #023E8A;
+            --sand: #FFF8F0;
+            --sand-warm: #FFECD2;
+            --coral: #FF6B6B;
+            --palm: #2D6A4F;
+            --sunset: #F9844A;
+            --text: #1A1A2E;
+            --text-light: #4A4A5A;
+            --card-shadow: 0 4px 20px rgba(0,119,182,0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, sans-serif;
+            background: var(--sand);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--ocean) 0%, var(--ocean-deep) 100%);
+            color: white;
+            padding: 3rem 1.5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: var(--sand);
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        }
+
+        .hero::after {
+            content: '🌴';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2.5rem;
+            opacity: 0.3;
+            animation: sway 4s ease-in-out infinite;
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        .hero h1 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 500px;
+        }
+
+        /* Quick Nav */
+        .quick-nav {
+            display: flex;
+            gap: 0.75rem;
+            padding: 1rem 1.5rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            background: var(--sand);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0,119,182,0.1);
+        }
+
+        .quick-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.6rem 1rem;
+            background: white;
+            border: 2px solid transparent;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .nav-btn:hover, .nav-btn:focus {
+            border-color: var(--ocean);
+            background: white;
+            transform: translateY(-1px);
+        }
+
+        .nav-btn.active {
+            background: var(--ocean);
+            color: white;
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 1.5rem;
+        }
+
+        .map-container {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+            display: block;
+        }
+
+        .map-tip {
+            padding: 1rem;
+            background: var(--sand-warm);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .map-tip strong {
+            color: var(--ocean-deep);
+        }
+
+        /* Section Headers */
+        .section-header {
+            padding: 2rem 1.5rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--ocean) 0%, var(--ocean-deep) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        /* Cards */
+        .cards {
+            padding: 0 1rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,119,182,0.15);
+        }
+
+        .card-header {
+            padding: 1.25rem 1.25rem 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .card-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+        }
+
+        .card-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .card-number {
+            width: 32px;
+            height: 32px;
+            background: var(--sand-warm);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--ocean-deep);
+            flex-shrink: 0;
+        }
+
+        .card-body {
+            padding: 0 1.25rem 1rem;
+        }
+
+        .card-body p {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .insider-tip {
+            margin-top: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: linear-gradient(135deg, var(--sand-warm) 0%, #FFF5E6 100%);
+            border-radius: 10px;
+            border-left: 3px solid var(--sunset);
+        }
+
+        .insider-tip::before {
+            content: '✨ Insider tip: ';
+            font-weight: 600;
+            color: var(--sunset);
+        }
+
+        .card-actions {
+            padding: 0.75rem 1.25rem 1.25rem;
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.65rem 1rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--ocean);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--ocean-deep);
+        }
+
+        .btn-secondary {
+            background: var(--sand);
+            color: var(--text);
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .btn-secondary:hover {
+            background: var(--sand-warm);
+        }
+
+        /* Special Cards */
+        .card.highlight {
+            border: 2px solid var(--coral);
+        }
+
+        .card.highlight .card-number {
+            background: var(--coral);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--ocean-deep);
+            color: white;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        footer h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            opacity: 0.85;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        footer .emoji-row {
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+            letter-spacing: 0.5rem;
+        }
+
+        /* Utility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            border: 0;
+        }
+
+        /* Responsive */
+        @media (min-width: 600px) {
+            .cards {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.25rem;
+                padding: 0 1.5rem 2rem;
+            }
+
+            .map-container iframe {
+                height: 400px;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .hero {
+                padding: 4rem 2rem 3rem;
+                text-align: center;
+            }
+
+            .hero p {
+                margin: 0 auto;
+            }
+
+            .quick-nav {
+                justify-content: center;
+                padding: 1.25rem 2rem;
+            }
+
+            .section-header {
+                max-width: 900px;
+                margin: 0 auto;
+            }
+
+            .cards {
+                max-width: 900px;
+                margin: 0 auto;
+            }
+
+            .map-section {
+                max-width: 900px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <h1>San Pedro, Belize</h1>
+        <p>Our favorite spots for you to explore on Ambergris Caye — food, fun, and unforgettable experiences.</p>
+    </header>
+
+    <nav class="quick-nav" aria-label="Jump to section">
+        <a href="#map" class="nav-btn">🗺️ Map</a>
+        <a href="#food" class="nav-btn">🍽️ Food</a>
+        <a href="#adventures" class="nav-btn">🤿 Adventures</a>
+        <a href="#nightlife" class="nav-btn">🎉 Night Out</a>
+    </nav>
+
+    <section id="map" class="map-section">
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15198.868034567!2d-87.9647!3d17.9214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f5d7fc2a67e3255%3A0xd4b0cf960e92f8a5!2sSan%20Pedro%2C%20Belize!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                title="San Pedro, Belize map">
+            </iframe>
+            <div class="map-tip">
+                <span>📍</span>
+                <span><strong>Tap any "Directions" button</strong> below to navigate to that spot. Each card opens Google Maps on your phone!</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOD SECTION -->
+    <section id="food">
+        <div class="section-header">
+            <div class="section-icon">🍽️</div>
+            <h2>Food & Treats</h2>
+        </div>
+
+        <div class="cards">
+            <article class="card highlight">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">Caliente</h3>
+                        <p class="card-subtitle">Beachfront Mexican/Caribbean</p>
+                    </div>
+                    <span class="card-number">1</span>
+                </div>
+                <div class="card-body">
+                    <p>Right on the water, perfect for sunset and margaritas. The vibe is relaxed and the food is excellent.</p>
+                    <div class="insider-tip">Ask for the "loaded baked potato" — it's off-menu but they'll know exactly what you mean. Trust us on this one.</div>
+                </div>
+                <div class="card-actions">
+                    <a href="https://maps.google.com/?q=Caliente+Restaurant+San+Pedro+Belize" target="_blank" rel="noopener" class="btn btn-primary">📍 Directions</a>
+                    <a href="https://calientebz.com" target="_blank" rel="noopener" class="btn btn-secondary">🌐 Website</a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">Caramba Restaurant</h3>
+                        <p class="card-subtitle">Pick-your-own seafood</p>
+                    </div>
+                    <span class="card-number">2</span>
+                </div>
+                <div class="card-body">
+                    <p>On Pescador Drive (Middle Street). They have a big table of fresh seafood on ice right outside — you pick your fish or lobster and tell them how you want it cooked.</p>
+                    <div class="insider-tip">The lobster is incredible. Point at the one you want and they'll make it perfect.</div>
+                </div>
+                <div class="card-actions">
+                    <a href="https://maps.google.com/?q=Caramba+Restaurant+San+Pedro+Belize+Pescador+Drive" target="_blank" rel="noopener" class="btn btn-primary">📍 Directions</a>
+                    <a href="https://carambarestaurant.bz" target="_blank" rel="noopener" class="btn btn-secondary">🌐 Website</a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">Elvi's Kitchen</h3>
+                        <p class="card-subtitle">San Pedro classic</p>
+                    </div>
+                    <span class="card-number">3</span>
+                </div>
+                <div class="card-body">
+                    <p>Beloved local restaurant with sand floors and a great mix of Belizean and Caribbean dishes. Good cocktails too. A bit more of a "night out" dinner vibe.</p>
+                </div>
+                <div class="card-actions">
+                    <a href="https://maps.google.com/?q=Elvi's+Kitchen+San+Pedro+Belize" target="_blank" rel="noopener" class="btn btn-primary">📍 Directions</a>
+                    <a href="https://www.elviskitchen.com" target="_blank" rel="noopener" class="btn btn-secondary">🌐 Website</a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">Robin's Kitchen</h3>
+                        <p class="card-subtitle">Roadside shack, huge flavor</p>
+                    </div>
+                    <span class="card-number">4</span>
+                </div>
+                <div class="card-body">
+                    <p>Tiny shack south of town on Coconut Drive. Super casual, insanely good jerk chicken and local plates. This is where the flavor is.</p>
+                    <div class="insider-tip">Go hungry. The portions are generous and everything is delicious.</div>
+                </div>
+                <div class="card-actions">
+                    <a href="https://maps.google.com/?q=Robin's+Kitchen+San+Pedro+Belize" target="_blank" rel="noopener" class="btn btn-primary">📍 Directions</a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">Belize Chocolate Company</h3>
+                        <p class="card-subtitle">Drinkable chocolate heaven</p>
+                    </div>
+                    <span class="card-number">5</span>
+                </div>
+                <div class="card-body">
+                    <p>Beachfront chocolate shop in town. The must-try here is the drinkable chocolate (hot or iced) — rich, smooth, and not too sweet.</p>
+                </div>
+                <div class="card-actions">
+                    <a href="https://maps.google.com/?q=Belize+Chocolate+Company+San+Pedro+Belize" target="_blank" rel="noopener" class="btn btn-primary">📍 Directions</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ADVENTURES SECTION -->
+    <section id="adventures">
+        <div class="section-header">
+            <div class="section-icon">🤿</div>
+            <h2>Experiences & Adventures</h2>
+        </div>
+
+        <div class="cards">
+            <article class="card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">Iguana Eco Sanctuary</h3>
+                        <p class="card-subtitle">Mangrove conservation area</p>
+                    </div>
+                    <span class="card-number">6</span>
+                </div>
+                <div class="card-body">
+                    <p>On the lagoon side of town (Seaweed Street, near the power substation). A peaceful spot to see iguanas up close in their natural habitat.</p>
+                    <div class="insider-tip">Go around 10 a.m. when they feed the iguanas — that's when they all come out and it's amazing to see. Donation-based, open ~8am-4:30pm.</div>
+                </div>
+                <div class="card-actions">
+                    <a href="https://maps.google.com/?q=Iguana+Eco+Sanctuary+San+Pedro+Belize" target="_blank" rel="noopener" class="btn btn-primary">📍 Directions</a>
+                    <a href="https://www.thoroughlytravel.com/iguana-eco-sanctuary-san-pedro/" target="_blank" rel="noopener" class="btn btn-secondary">ℹ️ More Info</a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">Amigos Del Mar</h3>
+                        <p class="card-subtitle">Dive & snorkel tours</p>
+                    </div>
+                    <span class="card-number">7</span>
+                </div>
+                <div class="card-body">
+                    <p>The go-to dive and snorkel shop right on the beach in town. This is where boats leave for Hol Chan, Shark Ray Alley, and other reef trips.</p>
+                </div>
+                <div class="card-actions">
+                    <a href="https://maps.google.com/?q=Amigos+Del+Mar+Tour+Center+San+Pedro+Belize" target="_blank" rel="noopener" class="btn btn-primary">📍 Directions</a>
+                    <a href="https://www.amigosdivebelize.com/2tank.php" target="_blank" rel="noopener" class="btn btn-secondary">🌐 Website</a>
+                </div>
+            </article>
+
+            <article class="card highlight">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">Massage By The Reef</h3>
+                        <p class="card-subtitle">Spa over the ocean</p>
+                    </div>
+                    <span class="card-number">8</span>
+                </div>
+                <div class="card-body">
+                    <p>Outdoor day spa right on/above the dock at Amigos Del Mar. Get a couples massage while listening to the waves and feeling the ocean breeze. Truly relaxing.</p>
+                    <div class="insider-tip">About $60 USD per person for 60 minutes. Book ahead if you can — it's popular for good reason.</div>
+                </div>
+                <div class="card-actions">
+                    <a href="https://maps.google.com/?q=Massage+By+The+Reef+Outdoor+Day+Spa+San+Pedro+Belize" target="_blank" rel="noopener" class="btn btn-primary">📍 Directions</a>
+                    <a href="https://www.tripadvisor.com/Attraction_Review-g291962-d3845382-Massage_By_The_Reef_Outdoor_Day_Spa-San_Pedro_Ambergris_Caye_Belize_Cayes.html" target="_blank" rel="noopener" class="btn btn-secondary">⭐ Reviews</a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">Lobster Fishing + Beach BBQ</h3>
+                        <p class="card-subtitle">Seasonal adventure (lobster season)</p>
+                    </div>
+                    <span class="card-number">9</span>
+                </div>
+                <div class="card-body">
+                    <p>During lobster season, you can book a combo trip: fishing, lobster hunting, snorkeling, then a beach BBQ where they cook what you catch. Many resorts will also cook your catch for dinner.</p>
+                    <div class="insider-tip">Ask at Amigos Del Mar or local guides. Let us know if you want to do this and we can connect you with someone for a more personal experience!</div>
+                </div>
+                <div class="card-actions">
+                    <a href="https://www.belizecandacefishandreeftours.bz/full-day-fishing-snorkeling-lobster-and-conch-hunting/" target="_blank" rel="noopener" class="btn btn-secondary">ℹ️ Example Tour</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- NIGHT OUT SECTION -->
+    <section id="nightlife">
+        <div class="section-header">
+            <div class="section-icon">🎉</div>
+            <h2>Fun Night Out</h2>
+        </div>
+
+        <div class="cards">
+            <article class="card highlight">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">Chicken Drop</h3>
+                        <p class="card-subtitle">Corona Del Mar – Thursday nights</p>
+                    </div>
+                    <span class="card-number">10</span>
+                </div>
+                <div class="card-body">
+                    <p>The "world-famous" Chicken Drop (chicken bingo) at Corona Del Mar Hotel, south of town. Every Thursday evening starting around 6pm.</p>
+                    <div class="insider-tip">You buy a number on a big board and everyone waits to see where the chicken "drops." It's ridiculous, hilarious, and you have to experience it at least once.</div>
+                </div>
+                <div class="card-actions">
+                    <a href="https://maps.google.com/?q=Corona+Del+Mar+Hotel+San+Pedro+Belize" target="_blank" rel="noopener" class="btn btn-primary">📍 Directions</a>
+                    <a href="https://www.coronadelmarhotelbelize.com/chicken-drop" target="_blank" rel="noopener" class="btn btn-secondary">🌐 Website</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <footer>
+        <h3>Have an amazing trip! 🌊</h3>
+        <p>
+            Tap the <strong>📍 Directions</strong> button on any card<br>
+            to open navigation on your phone.
+        </p>
+        <p style="margin-top: 1rem; opacity: 0.7; font-size: 0.85rem;">
+            Made with love for you ❤️
+        </p>
+        <div class="emoji-row">🌴 🦞 🌅</div>
+    </footer>
+
+</body>
+</html>
